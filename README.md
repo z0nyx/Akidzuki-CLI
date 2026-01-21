@@ -149,7 +149,7 @@ python main.py
 or
 
 ```bash
-python -m ssh_cli.main
+python -m akidzuki_cli.main
 ```
 
 ## Usage
@@ -194,13 +194,13 @@ For command-line usage:
 
 ```bash
 # List all connections
-python -m ssh_cli.cli list [--sort name|host|last_used|group]
+python -m akidzuki_cli.cli list [--sort name|host|last_used|group]
 
 # Test a connection
-python -m ssh_cli.cli test <connection_name>
+python -m akidzuki_cli.cli test <connection_name>
 
 # Connect to a server
-python -m ssh_cli.cli connect <connection_name>
+python -m akidzuki_cli.cli connect <connection_name>
 ```
 
 ### Adding a Connection
@@ -278,7 +278,7 @@ To change where connections are stored, edit `.ssh_cli_settings.json` and modify
 
 ## Export/Import
 
-Export and import functionality is available through the `ssh_cli.utils.export_import` module:
+Export and import functionality is available through the `akidzuki_cli.utils.export_import` module:
 
 - `export_to_json()` - Export connections to JSON format
 - `import_from_json()` - Import connections from JSON
@@ -314,7 +314,7 @@ You can use SSH keys instead of passwords for authentication. Simply provide the
 
 ```
 Akidzuki-CLI/
-├── ssh_cli/              # Main package
+├── akidzuki_cli/              # Main package
 │   ├── config/           # Configuration management
 │   ├── models/           # Data models
 │   ├── services/         # Business logic (service layer)
