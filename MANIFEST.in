@@ -1,0 +1,7 @@
+include README.md
+include requirements.txt
+include LICENSE
+recursive-include akidzuki_cli *.py
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude *.so

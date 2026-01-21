@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "akidzuki"
+version = "1.0.0"
+description = "SSH Connection Manager - Terminal SSH Connection Manager"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "z0nyx", email = "z0nyxoff@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Terminals",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "paramiko>=3.0.0",
+    "rich>=13.0.0",
+    "keyring>=24.0.0",
+    "cryptography>=41.0.0",
+    "pyyaml>=6.0.0",
+]
+
+[project.scripts]
+akidzuki = "akidzuki_cli.main:main"
+
+[tool.setuptools]
+packages = ["akidzuki_cli"]
+
+[tool.setuptools.package-data]
+"*" = ["*.md", "*.txt"]
