@@ -102,6 +102,25 @@ class SSHSession:
                         if ch == b'\x02':
                             self._handle_menu_return()
                             break
+                        if ch in (b'\x00', b'\xe0'):
+                            ch2 = msvcrt.getch()
+                            if ch2 == b'H':
+                                for bch in b'\x1b[A':
+                                    input_queue.put(bytes([bch]))
+                                continue
+                            if ch2 == b'P':
+                                for bch in b'\x1b[B':
+                                    input_queue.put(bytes([bch]))
+                                continue
+                            if ch2 == b'K':
+                                for bch in b'\x1b[D':
+                                    input_queue.put(bytes([bch]))
+                                continue
+                            if ch2 == b'M':
+                                for bch in b'\x1b[C':
+                                    input_queue.put(bytes([bch]))
+                                continue
+                            continue
                         input_queue.put(ch)
                     else:
                         time.sleep(0.01)
