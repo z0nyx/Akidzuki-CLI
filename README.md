@@ -7,141 +7,138 @@ Terminal SSH connection manager. Store your SSH connections, connect quickly, ma
 
 ## Features
 
-- ✅ **Connection Management** - Add, edit, and delete SSH connections
-- ✅ **Keyboard Navigation** - Navigate connections with arrow keys
-- ✅ **Search & Filter** - Quickly find connections (Press `F`)
-- ✅ **Grouping** - Organize connections by groups
-- ✅ **Favorites** - Mark frequently used connections (Press `*` or `V`)
-- ✅ **Recent Connections** - Track and access recently used connections
-- ✅ **Connection Testing** - Test connections before connecting (Press `T`)
-- ✅ **Sorting** - Sort by name, host, last used date, or group
-- ✅ **Secure Password Storage** - Passwords stored via system keyring
-- ✅ **SSH Key Support** - Use SSH keys for authentication
-- ✅ **Interactive SSH Sessions** - Full terminal access with return-to-menu (Ctrl+B)
-- ✅ **Keep-Alive** - Maintain long-running sessions
-- ✅ **SSH Config Format** - Compatible with standard SSH config files
-- ✅ **Export/Import** - Export/import connections (JSON, SSH config)
-- ✅ **CLI Commands** - Command-line interface for quick access
-- ✅ **Logging** - Comprehensive operation logging
-- ✅ **Beautiful TUI** - Rich terminal UI with colors and formatting
+- ✅ **Connection Management** - Add, edit, delete SSH connections
+- ✅ **Keyboard Navigation** - Navigate with arrow keys, no mouse needed
+- ✅ **Search & Filter** - Find connections fast (Press `F`)
+- ✅ **Grouping** - Keep production, staging, personal separate
+- ✅ **Favorites** - Star frequently used connections (Press `*` or `V`)
+- ✅ **Recent Connections** - Jump back to servers you just used
+- ✅ **Connection Testing** - Check if a server is reachable (Press `T`)
+- ✅ **Sorting** - Order by name, host, last used, or group
+- ✅ **Secure Password Storage** - Uses your system keyring, not plaintext
+- ✅ **SSH Key Support** - Bring your own .pem or id_rsa
+- ✅ **Interactive SSH Sessions** - Full terminal access, jump back with Ctrl+B
+- ✅ **Keep-Alive** - No more dropped sessions during lunch
+- ✅ **SSH Config Format** - Compatible with OpenSSH, no lock-in
+- ✅ **Export/Import** - Move connections between machines (JSON, SSH config)
+- ✅ **CLI Commands** - Script it, pipe it, automate it
+- ✅ **Logging** - Know what broke and when
+- ✅ **Beautiful TUI** - Actually readable, not just green text on black
 
 ## How It Works
 
-When you add a connection, it saves to `.ssh_config` file (standard SSH config format). Passwords go to your system's secure storage - Windows Credential Store, macOS Keychain, or Linux Secret Service. Everything else is stored in config files in your working directory.
+Add a connection, it writes to `.ssh_config` — same format OpenSSH uses. Passwords? Those go to your system's secure storage: Windows Credential Store, macOS Keychain, or Linux Secret Service. Everything else lives in config files right in your working directory. No hidden folders, no surprises.
 
 ### Data Storage
 
-**SSH Connections** are saved in:
-- **Default location:** `.ssh_config` in the current working directory
-- **Format:** Standard SSH config format (compatible with OpenSSH)
-- **Customizable:** Can be changed via settings file
+**SSH Connections** live in:
+- **Default:** `.ssh_config` in whatever directory you're in
+- **Format:** Standard SSH config. You could cat it and use it with OpenSSH directly
+- **Custom:** Change the path in settings if you want it elsewhere
 
-**Application Settings** are saved in:
-- **Default location:** `.ssh_cli_settings.json` in the current working directory
-- **Contains:** Config path, log settings, timeouts, display preferences
+**Application Settings** live in:
+- **Default:** `.ssh_cli_settings.json` in your current directory
+- **What's inside:** Config path, log settings, timeouts, whether you like colors
 
-**Passwords** are stored in:
-- **Windows:** Windows Credential Store
+**Passwords** live in:
+- **Windows:** Credential Manager
 - **macOS:** Keychain
 - **Linux:** Secret Service API or KWallet
 
 ## Installation
 
-### Quick Installation
+### Quick Install
 
 #### Windows
 
-1. Download or clone the repository
-2. Open Command Prompt or PowerShell in the project directory
+1. Grab the repo
+2. Open Command Prompt or PowerShell in the folder
 3. Run:
 ```bash
 install.bat
 ```
 
-The installer will:
-- Check for Python installation
-- Install the package and dependencies
-- Add the `akidzuki` command to your PATH automatically
-- Verify the installation
+This will:
+- Check if Python exists
+- Install the thing and its dependencies
+- Add `akidzuki` to your PATH automatically
+- Tell you if it worked
 
 #### Linux / macOS
 
-1. Download or clone the repository
-2. Open terminal in the project directory
-3. Make the installer executable and run:
+1. Clone or download
+2. Open terminal in the folder
+3. Make it executable and run:
 ```bash
 chmod +x install.sh
 ./install.sh
 ```
 
-The installer will:
-- Check for Python 3 installation
-- Install the package and dependencies
-- Add the `akidzuki` command to your PATH (via `.bashrc`, `.zshrc`, or `.profile`)
-- Verify the installation
+This will:
+- Check for Python 3
+- Install the package
+- Add `akidzuki` to your PATH (via `.bashrc`, `.zshrc`, or `.profile`)
+- Verify it's working
 
-### Manual Installation
+### Manual Install
 
 #### Prerequisites
 
-- Python 3.8 or higher
-- pip (Python package manager)
+- Python 3.8 or newer
+- pip
 
-#### Step 1: Clone or Download
+#### Step 1: Get the Code
 
 ```bash
 git clone https://github.com/z0nyx/Akidzuki-CLI.git
 cd Akidzuki-CLI
 ```
 
-#### Step 2: Install the Package
+#### Step 2: Install
 
-**Option A: Editable installation (recommended for development)**
+**Option A: Editable (you're gonna change stuff)**
 ```bash
 pip install -e .
 ```
 
-**Option B: Regular installation**
+**Option B: Regular (just want it to work)**
 ```bash
 pip install .
 ```
 
-#### Step 3: Verify Installation
+#### Step 3: Check It
 
-After installation, you should be able to run:
 ```bash
 akidzuki
 ```
 
-**Note:** If the `akidzuki` command is not found:
-- **Windows:** The Scripts directory may not be in PATH. Check `%USERPROFILE%\AppData\Roaming\Python\Python3XX\Scripts`
-- **Linux/macOS:** The bin directory may not be in PATH. Check `~/.local/bin` or add it manually
+**If it's not found:**
+- **Windows:** Look in `%USERPROFILE%\AppData\Roaming\Python\Python3XX\Scripts`
+- **Linux/macOS:** Check `~/.local/bin` or just add it to PATH
 
-### Development Installation
+### Dev Setup
 
-For development purposes:
-
-1. Clone the repository:
+1. Clone:
 ```bash
 git clone https://github.com/z0nyx/Akidzuki-CLI.git
 cd Akidzuki-CLI
 ```
 
-2. Create a virtual environment:
+2. Virtual environment:
 ```bash
 python -m venv venv
 ```
 
-3. Activate the virtual environment:
+3. Activate:
    - **Windows:** `venv\Scripts\activate`
    - **Linux/macOS:** `source venv/bin/activate`
 
-4. Install dependencies:
+4. Dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-5. Run the application:
+5. Run:
 ```bash
 python main.py
 ```
@@ -156,7 +153,7 @@ python -m akidzuki_cli.main
 
 ### Main Menu
 
-Launch the application:
+Just type:
 ```bash
 akidzuki
 ```
@@ -168,60 +165,60 @@ akidzuki
 
 | Key | Action |
 |-----|--------|
-| **↑/↓** | Navigate connections |
-| **Enter** | Connect to selected connection |
-| **A** | Add new connection |
-| **E** | Edit selected connection |
-| **D** | Delete selected connection |
-| **T** | Test connection |
-| **F** | Search/Filter connections |
-| **S** | Change sort order |
-| **G** | Filter by group |
-| *** / V** | Toggle favorite / Show favorites only |
-| **I** | Show connection info |
+| **↑/↓** | Move around |
+| **Enter** | Connect |
+| **A** | New connection |
+| **E** | Edit this one |
+| **D** | Delete this one |
+| **T** | Ping test |
+| **F** | Search |
+| **S** | Sort differently |
+| **G** | Show only this group |
+| *** / V** | Star it / Show only favorites |
+| **I** | Connection details |
 | **R** | Refresh list |
-| **?** | Show help |
-| **Q / ESC** | Quit |
+| **?** | Help screen |
+| **Q / ESC** | Exit |
 
 ### During SSH Session
 
-- **Ctrl+B** - Return to main menu (keeps connection alive)
-- **Ctrl+C** - Disconnect and return to menu
+- **Ctrl+B** - Back to menu (session stays open)
+- **Ctrl+C** - Disconnect and return
 
 ### CLI Commands
 
-For command-line usage:
+For when you don't want the menu:
 
 ```bash
-# List all connections
+# List everything
 python -m akidzuki_cli.cli list [--sort name|host|last_used|group]
 
 # Test a connection
 python -m akidzuki_cli.cli test <connection_name>
 
-# Connect to a server
+# Connect directly
 python -m akidzuki_cli.cli connect <connection_name>
 ```
 
 ### Adding a Connection
 
-When adding a new connection, you'll be prompted for:
+It'll ask for:
 
-- **Connection Name** (required) - A friendly name for the connection
-- **Host** (required) - IP address or hostname
-- **HostName** (optional) - Actual hostname (defaults to Host)
-- **Username** (default: root) - SSH username
+- **Connection Name** (required) - Whatever you want to call it
+- **Host** (required) - IP or domain
+- **HostName** (optional) - If different from the display name
+- **Username** (default: root) - Who you're logging in as
 - **Port** (default: 22) - SSH port
-- **Password** (optional) - Stored securely in system keyring
-- **Identity File** (optional) - Path to SSH private key
-- **Group** (optional) - Group for organization
-- **Favorite** (optional) - Mark as favorite
+- **Password** (optional) - Goes straight to your keyring
+- **Identity File** (optional) - Path to your private key
+- **Group** (optional) - dev, prod, homelab, whatever
+- **Favorite** (optional) - Star it now or later
 
 ## Configuration
 
 ### Connection Storage
 
-Connections are stored in `.ssh_config` file (by default in the current working directory) in standard SSH config format:
+Connections land in `.ssh_config` (unless you change it). Looks like this:
 
 ```
 Host server1
@@ -237,7 +234,7 @@ Host server1
 
 ### Application Settings
 
-Settings are stored in `.ssh_cli_settings.json` (by default in the current working directory):
+Settings go in `.ssh_cli_settings.json`:
 
 ```json
 {
@@ -254,58 +251,57 @@ Settings are stored in `.ssh_cli_settings.json` (by default in the current worki
 }
 ```
 
-**Settings explained:**
-- `config_path` - Path to SSH config file
-- `log_file` - Path to log file
-- `log_level` - Logging level (DEBUG, INFO, WARNING, ERROR)
-- `ssh_timeout` - SSH connection timeout (seconds)
-- `test_timeout` - Connection test timeout (seconds)
-- `keepalive_interval` - Keep-alive interval (seconds)
-- `show_colors` - Enable colors in interface
-- `sort_by` - Default sort order
-- `default_group` - Default group for new connections
-- `recent_limit` - Number of recent connections to display
+**What they do:**
+- `config_path` - Where your servers are stored
+- `log_file` - Where logs go
+- `log_level` - How chatty the logs should be
+- `ssh_timeout` - How long to wait before giving up
+- `test_timeout` - Same but for ping tests
+- `keepalive_interval` - How often to ping idle sessions
+- `show_colors` - Some people hate colors, weirdly
+- `sort_by` - Default sorting preference
+- `default_group` - Pre-fill this group for new servers
+- `recent_limit` - How many recent servers to remember
 
-### Changing Storage Location
+### Moving Your Storage
 
-To change where connections are stored, edit `.ssh_cli_settings.json` and modify the `config_path` value:
+Edit `.ssh_cli_settings.json` and change `config_path`:
 
 ```json
 {
-  "config_path": "/path/to/your/ssh_config"
+  "config_path": "/home/you/ssh/servers.txt"
 }
 ```
 
 ## Export/Import
 
-Export and import functionality is available through the `akidzuki_cli.utils.export_import` module:
+Available through `akidzuki_cli.utils.export_import`:
 
-- `export_to_json()` - Export connections to JSON format
-- `import_from_json()` - Import connections from JSON
-- `export_to_ssh_config()` - Export to SSH config format
-- `import_from_ssh_config()` - Import from SSH config
+- `export_to_json()` - Save everything as JSON
+- `import_from_json()` - Load from JSON
+- `export_to_ssh_config()` - Plain SSH config format
+- `import_from_ssh_config()` - Import from existing SSH config
 
 ## Security
 
-### Password Storage
+### Passwords
 
-Passwords are stored securely using your system's credential manager:
-
-- **Windows:** Windows Credential Store
+No plaintext passwords. Ever. They go straight to:
+- **Windows:** Credential Manager
 - **macOS:** Keychain
-- **Linux:** Secret Service API or KWallet
+- **Linux:** Secret Service / KWallet
 
-Passwords are never stored in plain text files. They are encrypted by your operating system's secure storage.
+Your OS encrypts them, not this script.
 
 ### SSH Keys
 
-You can use SSH keys instead of passwords for authentication. Simply provide the path to your private key file when adding or editing a connection.
+Prefer keys? Just drop the path to your private key. Works with both password and key auth.
 
 ## Requirements
 
-- Python 3.8 or higher
+- Python 3.8+
 - paramiko >= 3.0.0
-- rich >= 13.0.0
+- rich >= 13.0.0  
 - keyring >= 24.0.0
 - cryptography >= 41.0.0
 - pyyaml >= 6.0.0
@@ -314,61 +310,57 @@ You can use SSH keys instead of passwords for authentication. Simply provide the
 
 ```
 Akidzuki-CLI/
-├── akidzuki_cli/              # Main package
-│   ├── config/           # Configuration management
-│   ├── models/           # Data models
-│   ├── services/         # Business logic (service layer)
-│   ├── ssh/              # SSH client and sessions
-│   ├── ui/               # User interface
-│   ├── utils/            # Utilities (validation, logging, export/import)
-│   ├── cli.py            # CLI commands
-│   ├── main.py           # GUI entry point
+├── akidzuki_cli/              # The actual code
+│   ├── config/           # Reading/writing configs
+│   ├── models/           # What a connection looks like
+│   ├── services/         # The logic
+│   ├── ssh/              # Actually connecting
+│   ├── ui/               # The terminal UI
+│   ├── utils/            # Helpers, logs, export/import
+│   ├── cli.py            # Command line interface
+│   ├── main.py           # Entry point for the UI
 │   └── settings.py       # Settings management
 ├── main.py               # Launch script
 ├── requirements.txt      # Dependencies
-├── setup.py              # Package setup
-├── pyproject.toml        # Modern package configuration
+├── setup.py              # Old school setup
+├── pyproject.toml        # New school setup
 ├── install.bat           # Windows installer
-├── install.sh            # Linux/macOS installer
-└── README.md             # Documentation
+├── install.sh            # *nix installer
+└── README.md             # This file
 ```
 
 ## Troubleshooting
 
-### Command Not Found
-
-If `akidzuki` command is not found after installation:
+### "akidzuki: command not found"
 
 **Windows:**
-1. Check if Scripts directory is in PATH: `%USERPROFILE%\AppData\Roaming\Python\Python3XX\Scripts`
-2. Restart your terminal/command prompt
-3. Or run the installer again: `install.bat`
+1. Check `%USERPROFILE%\AppData\Roaming\Python\Python3XX\Scripts`
+2. Restart your terminal
+3. Run `install.bat` again
 
 **Linux/macOS:**
-1. Check if bin directory is in PATH: `~/.local/bin`
-2. Add to PATH manually or restart terminal
-3. Or run: `source ~/.bashrc` (or `.zshrc`)
+1. Check `~/.local/bin`
+2. Add it to PATH or restart terminal
+3. `source ~/.bashrc` (or `.zshrc`)
 
-### Connection Issues
+### Won't Connect
 
-- Verify SSH credentials are correct
-- Check if SSH service is running on the target server
-- Ensure firewall allows SSH connections
-- Test connection using the built-in test feature (Press `T`)
+- Double-check username/password
+- Is SSH actually running on the server?
+- Firewalls? Corporate VPN?
+- Hit `T` to test before you waste time
 
 ### Import Errors
 
-If you encounter import errors:
-- Ensure all dependencies are installed: `pip install -r requirements.txt`
-- Check Python version: `python --version` (should be 3.8+)
-- Verify virtual environment is activated (if using one)
+- `pip install -r requirements.txt` again
+- `python --version` — need 3.8+
+- Did you activate your venv?
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Found a bug? Want a feature? PRs welcome.
 
 ## Support
 
-For issues, questions, or contributions, please visit:
-- **GitHub:** [https://github.com/z0nyx/Akidzuki-CLI](https://github.com/z0nyx/Akidzuki-CLI)
-- **Author:** [z0nyx](https://github.com/z0nyx)
+- **GitHub Issues:** [https://github.com/z0nyx/Akidzuki-CLI/issues](https://github.com/z0nyx/Akidzuki-CLI/issues)
+- **Author:** [@z0nyx](https://github.com/z0nyx)
