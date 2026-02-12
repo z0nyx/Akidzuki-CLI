@@ -158,7 +158,7 @@ Just type:
 akidzuki
 ```
 <div align="center">
-  <img src="https://media.discordapp.net/attachments/1396120664682922097/1463588313356308595/image.png?ex=69726056&is=69710ed6&hm=d23274425e5fbef4729880a0a67fc0f71258c5846cac1a8ca206885f12dcb581&=&format=webp&quality=lossless&width=1376&height=361" alt="Akidzuki-CLI">
+  <img src="https://media.discordapp.net/attachments/1396120664682922097/1463588313356308595/image.png?ex=698f6156&is=698e0fd6&hm=58ee143adffb796e7ac4bdaf34704370defe419996bfb18313e3131c0d7b73bc&=&format=webp&quality=lossless&width=1376&height=361" alt="Akidzuki-CLI">
 </div>
 
 #### Keyboard Shortcuts
