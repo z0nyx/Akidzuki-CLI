@@ -2,6 +2,7 @@ import logging
 from typing import Optional
 
 from ..models.connection import SSHConnection
+from ..settings import Settings
 from ..ssh.client import SSHClient
 from ..ssh.session import SSHSession
 from ..config.manager import ConfigManager
